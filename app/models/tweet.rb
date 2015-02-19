@@ -7,6 +7,6 @@ class Tweet < ActiveRecord::Base
   has_many :comments,foreign_key:"tweet_id"
   belongs_to :user, inverse_of: :tweets
 
-  default_scope order('created_at desc')
+  default_scope {order('created_at desc')}
 
 end

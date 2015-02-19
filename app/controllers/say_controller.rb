@@ -7,12 +7,11 @@ class SayController < ApplicationController
    if @user_signed_in == true
      redirect_to 'http://localhost:3000/say/goodbye'
  end
-
+end
 
   def hello
-
+    signinredirect
   end
-   end
 
   def goodbye
     showusertweets

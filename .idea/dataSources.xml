@@ -5,14 +5,14 @@
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:M:\Users\Development\RubymineProjects\TwitterClone\db\development.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:M:\Users\Development\RubymineProjects\TestProject\db\development.sqlite3</jdbc-url>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails TwitterClone: test" uuid="61ec3543-6285-4702-8da1-8dd00a50361c">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:M:\Users\Development\RubymineProjects\TwitterClone\db\test.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:M:\Users\Development\RubymineProjects\TestProject\db\test.sqlite3</jdbc-url>
       <libraries />
     </data-source>
   </component>
