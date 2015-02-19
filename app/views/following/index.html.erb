@@ -1,0 +1,24 @@
+<h1>Following#index</h1>
+<p>Find me in app/views/following/index.html.erb</p>
+<tr>
+  <td><%= "ID _______|" %></td>
+  <td><%= "created______________| " %></td>
+  <td><%= "updated_______________|" %></td>
+  <td><%= "follower " %></td>
+  <td><%= "followee " %></td>
+</tr>  </br>
+
+
+<% @following.each do |following| %>
+    <thead>
+    <tr>
+      <td><%= following.id %></td>|
+      <td><%= following.created_at %></td>|
+      <td><%= following.updated_at %></td>|
+      <td><%= following.follower_id %></td>|
+      <td><%= following.followee_id %></td>|
+    </tr>
+    </br>
+    </thead>
+
+<% end %>

@@ -1,0 +1,70 @@
+<!-- image_tag Returns an HTML image tag for the source. size takes string resizes image   -->
+
+<%= image_tag "twitter_logo_green.png", :size => "23x23" %>
+<% if user_signed_in? %>
+<li><%= link_to "Logout", destroy_user_session_path, :method => :delete  %> </li>
+<% else %>
+<li><%= link_to "Login", new_user_session_path %>></li>
+<%end %>
+    <h1>Welcome to Twitter.</h1>
+<br/>
+<p>Connect with your friends --and other fascinationg <br/>
+  people.Get in-the-moment upadtes on the things<br/>
+  that interest you.And watch events unfold, in real<br/>
+  time,from every angle.</p>
+
+
+<p>Log in</p>
+<%= form_for(:user, :url => session_path(:user)) do |f| %>
+
+    <%= label_tag "user_email","Email" %></br>
+    <%= f.email_field :email %> </br>
+    <%= label_tag "user_password","Password" %></br>
+    <%= f.password_field :password %></br>
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me %></br>
+    <%= link_to "Forgot your password?", new_password_path(:user) %></br>
+    <%= f.submit 'Sign in' %>
+
+<% end %>
+
+<p> New to Twitter?SignUp </p>
+<%= form_for(:user, :url => registration_path(:user)) do |f| %>
+    <%= label_tag "user_full_name","Full Name" %></br>
+    <%= f.text_field :full_name %> </br>
+    <%= label_tag "user_email","Email" %></br>
+    <%= f.email_field :email %> </br>
+    <%= label_tag "user_password","Password" %></br>
+    <%= f.password_field :password %></br>
+    <%= label_tag "user_password_confirmation","Password confirmation" %></br>
+    <%= f.password_field :password_confirmation %></br>
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me %></br>
+    <%= link_to "Forgot your password?", new_password_path(:user) %></br>
+    <%= f.submit 'Sign up for CTwitter' %>
+
+<% end %>
+
+<navs>
+<div class ="menus">
+  <ul>
+
+  <li><%= link_to "About", nav_pages_About_path  %>   </li>
+  <li><%= link_to "Help", nav_pages_Help_path  %>  </li>
+  <li><%= link_to "Blog", nav_pages_Blog_path   %> </li>
+  <li><%= link_to "Status", nav_pages_Status_path  %>  </li>
+  <li><%= link_to "Jobs", nav_pages_Jobs_path   %> </li>
+  <li><%= link_to "Terms", nav_pages_Terms_path %>   </li>
+  <li><%= link_to "Privacy", nav_pages_Privacy_path   %>  </li>
+  <li><%= link_to "Cookies", nav_pages_Cookies_path   %>     </li>
+  <li><%= link_to "Ads info" , nav_pages_Ads_info_path   %>    </li>
+  <li><%= link_to "Brand", nav_pages_Brand_path   %>     </li>
+  <li><%= link_to "Advertise", nav_pages_Advertise_path  %>   </li>
+  <li><%= link_to "Businesses", nav_pages_Businesses_path  %> </li>
+  <li><%= link_to "Media" , nav_pages_Media_path %> </li>
+  <li><%= link_to "Developers" , nav_pages_Developers_path %></li>
+  <li><%= link_to "Directory" , nav_pages_Directory_path %></li>
+    <li>@2015 twitterClone </li>
+  </ul>
+</div>
+</navs>

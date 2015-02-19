@@ -1,0 +1,262 @@
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <style type="text/css" media="screen">
+      h1.fontface {font: 32px/38px 'MichromaRegular', Arial, sans-serif;letter-spacing: 0;}
+
+      p.style1 {font: 18px/27px 'MichromaRegular', Arial, sans-serif;}
+
+
+      @font-face {
+          font-family: 'MichromaRegular';
+          src: url('Michroma-webfont.eot');
+          src: url('Michroma-webfont.eot?#iefix') format('embedded-opentype'),
+          url('Michroma-webfont.woff') format('woff'),
+          url('Michroma-webfont.ttf') format('truetype'),
+          url('Michroma-webfont.svg#MichromaRegular') format('svg');
+          font-weight: normal;
+          font-style: normal;
+
+      }
+  </style>
+
+
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+</head>
+<body>
+
+
+
+<!--end header-->
+
+<nav>
+  <div class="menu">
+    <ul>
+      <li><%= link_to "Home",say_goodbye_path %></li>
+      <li>Notifications</li>
+      <li>Messages</li>
+      <li>Discover</li>
+      <li> <%= image_tag "twitter_logo_green.png", :size => "23x23" %></li>
+      <li>SearchBar</li>
+      <li><%= image_tag "twitteregg.png", :size => "23x23" %></li>
+      <li><%= image_tag "twitter-tweet-icon.png", :size => "23x23" %></li>
+      <% if user_signed_in? %>
+          <li><%= link_to "Logout", destroy_user_session_path, :method => :delete  %> </li>
+      <% else %>
+          <li><%= link_to "Login", new_user_session_path %>></li>
+      <%end %>
+    </ul>
+  </div>
+</nav>
+<div id="wrapper"><!-- #wrapper -->
+  <section id="main"><!-- #main content and sidebar area -->
+
+    <aside id="sidebar1"><!-- sidebar1 -->
+      <br><br><br>
+        <p><%= image_tag "ad125.jpg", :alt=> "" %><br>
+          <%= if (user_signed_in?)   then       current_user.fullname else    "NoUserSignedIn" end %></br>
+          <%= if (user_signed_in?) then "@" + current_user.fullname else   "@NoUserSignedIn" end %></br>
+          Tweets &nbsp&nbsp&nbsp&nbsp&nbsp Following </br>
+          <%= if (user_signed_in?)   then current_user.numbertweets else "NoUserSignedIn" end%>
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          <%= if user_signed_in?  then   current_user.numberfollowings else "NoUserSignedIn" end %>
+        </p>
+         <br /><br />
+
+
+      <h3>Trends <a href="">change</a> </h3><br>
+      <ul>
+        <li><a href="#">#MexicanCoast</a></li>
+        <li><a href="#">#CainDenies</a></li>
+        <li><a href="#">#Snowstorm</a></li>
+        <li><a href="#">#PlanDisaster</a></li>
+        <li><a href="#">#Employers</a></li>
+        <li><a href="#">#ObamaOrders</a></li>
+        <li><a href="#">#HillaryClinton</a></li>
+        <li><a href="#">#Sickened</a></li>
+        <li><a href="#">#IranSeeks</a></li>
+        <li><a href="#">#GreekBailout</a></li>
+        <li><a href="#">#Mandies</a></li>
+        <li><a href="#">#KansasCity</a></li>
+      </ul>
+
+    </aside><!-- end of sidebar1 -->
+
+
+    <section id="content"><!-- #content -->
+
+
+
+
+
+
+      <article class="group2">
+        <%= form_for :tweets do |f| %>
+            <%= f.text_area :the_tweet ,:width => "100%" ,:placeholder => "What's happening?"  %></br>
+            <%= Time.now.inspect %></br>
+            <%= f.submit "Tweet" %>
+        <% end %>
+
+           </article>
+
+      <article class="group2">						<br><br>
+        <h2><a href="#">Second Section or Article Title</a></h2>
+        Following Tweets</br></br>
+        <% current_user.followingstweets.each do|tweeter| %>
+
+        youtube.com    <thead>
+            <tr>
+
+              <td>Tweet:<%= tweeter.the_tweet %></td>, </br>
+              <td>Author:<%= tweeter.author_name %></td>,</br>
+              <td>Created AT:<%= tweeter.created_at %></td>,</br>
+
+            </tr>
+            </br>
+            </thead>
+
+        <% end %>
+            </br></br>
+
+        My tweets</br></br>
+        <%  @usertweets.each do |tweet| %>
+            <thead>
+            <tr>
+
+              <td>Tweet:<%= tweet.the_tweet %></td>, </br>
+              <td>Author:<%= tweet.author_name %></td>,</br>
+              <td>Created AT<%= tweet.created_at %></td>,</br>
+
+            </tr>
+            </br>
+            </thead>
+
+        <% end %>
+        </br>
+
+        </article>
+
+      <div class="newsbox">
+        <h2> Occupy Wallstreet Movement- Going Global</h2>
+        <%= image_tag"occupy1.jpg",:class =>  "floatimgleft"%>
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+          Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit
+          amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        <a href="#" class="button"> Read More </a>
+      </div>
+    </section>
+
+    <aside id="sidebar2"><!-- sidebar2 -->
+      <p>Who to follow<a href="#">Refresh</a><a href="#">View all</a></p>
+      <ul>
+        <li><a href="#">Curabitur sodales</a></li>
+        <li><a href="#">Sed dignissim</a></li>
+        <li><a href="#">Fusce nec</a></li>
+        <li><a href="#">Nulla quis</a></li>
+        <li><a href="#">Curabitur sodales</a></li>
+        <li><a href="#">Sed dignissim</a></li>
+        <li><a href="#">Fusce nec</a></li>
+        <li><a href="#">Nulla quis</a></li>
+      </ul>
+      <br>
+      <br>
+      <h3>We're Social Too!</h3><br>
+      <%= image_tag "facebook_32.png" %>
+      <%= image_tag "twitter_32.png" %>
+      <%= image_tag "youtube_32.png" %>
+
+
+      <br>
+      <br><br>
+      <br>
+      <h3>Video Blog </h3><br>
+      <ul>
+        <li><a href="#">10.29.11</a></li>
+        <li><a href="#">10.28.11</a></li>
+        <li><a href="#">10.27.11</a></li>
+        <li><a href="#">10.26.11 </a></li>
+        <li><a href="#">10.25.11</a></li>
+        <li><a href="#">10.24.11</a></li>
+        <li><a href="#">10.23.11</a></li>
+        <li><a href="#">More..</a></li>
+      </ul>
+
+
+      <h3> Links</h3>
+      <ul>
+        <li>>@2015 twitterClone </li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Help</a> </li>
+        <li><a href="#">Terms</a> </li>
+        <li><a href="#">Privacy</a> </li>
+        <li><a href="#">Cookies </a></li>
+        <li><a href="#">Ads info</a> </li>
+        <li><a href="#">Brand</a> </li>
+        <li><a href="#">Blog</a> </li>
+        <li><a href="#">Status</a> </li>
+        <li><a href="#">Apps</a></li>
+        <li><a href="#">Jobs</a> </li>
+        <li><a href="#">Advertise</a> </li>
+        <li><a href="#">Businesses</a> </li>
+        <li><a href="#">Media</a> </li>
+        <li><a href="#">Developers</a> </li>
+
+      </ul>
+
+    </aside><!-- end of sidebar -->
+
+  </section><!-- end of #main content and sidebar-->
+</div>
+<footer>
+  <div class="container1">
+    <section id="footer-area">
+
+      <section id="footer-outer-block">
+        <aside class="footer-segment">
+          <h4>News</h4>
+          <ul>
+            <li><a href="#">U.S.</a></li>
+            <li><a href="#">Local</a></li>
+            <li><a href="#">World</a></li>
+          </ul>
+        </aside><!-- end of #first footer segment -->
+
+        <aside class="footer-segment">
+          <h4>About Us</h4>
+          <ul>
+            <li><a href="#">Corporate HQ</a></li>
+            <li><a href="#">Staff</a></li>
+            <li><a href="#">History</a></li>
+          </ul>
+        </aside><!-- end of #second footer segment -->
+
+        <aside class="footer-segment">
+          <h4>Contact Us</h4>
+          <ul>
+            <li><a href="#">Customer Support</a></li>
+            <li><a href="#">Divisions</a></li>
+            <li><a href="#">Investor Relations</a></li>
+            <li><a href="#">Job Opportunities</a></li>
+          </ul>
+        </aside><!-- end of #third footer segment -->
+
+        <aside class="footer-segment">
+          <h4>Blahdyblah</h4>
+          <p>&copy; 2010 <a href="#">yoursite.com</a> Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+        </aside><!-- end of #fourth footer segment -->
+
+      </section><!-- end of footer-outer-block -->
+
+    </section><!-- end of footer-area -->
+  </div>
+</footer>
+<!-- Free template distributed by http://freehtml5templates.com -->
+</body>
+

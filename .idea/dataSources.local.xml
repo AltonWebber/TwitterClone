@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails TwitterClone: development" uuid="e87eee90-96ea-4c48-9edb-26027cdd56aa">
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="Rails TwitterClone: test" uuid="61ec3543-6285-4702-8da1-8dd00a50361c">
+      <first-sync>true</first-sync>
+    </data-source>
+  </component>
+</project>
